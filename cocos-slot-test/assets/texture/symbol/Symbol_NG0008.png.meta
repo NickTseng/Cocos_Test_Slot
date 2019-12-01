@@ -1,12 +1,13 @@
 {
-  "ver": "1.0.0",
+  "ver": "2.2.0",
   "uuid": "7f57fce7-7db1-4426-97ec-dd9a37b85304",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
+  "premultiplyAlpha": false,
   "subMetas": {
     "Symbol_NG0008": {
-      "ver": "1.0.3",
+      "ver": "1.0.4",
       "uuid": "5d51eb4f-4e80-4eb6-86d8-7f6d6e94208f",
       "rawTextureUuid": "7f57fce7-7db1-4426-97ec-dd9a37b85304",
       "trimType": "auto",

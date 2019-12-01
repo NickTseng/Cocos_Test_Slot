@@ -285,7 +285,7 @@ var Roller = cc.Class({
         if (!this.isSpinning) {
             this.spin();
         } else {
-            this.stop();
+            this.stop([1]);
         }
     },
 
