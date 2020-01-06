@@ -10,22 +10,48 @@ cc.Class({
     rewardNum: {
       type: cc.EditBox,
       default: null
-    }
+    },
+    startBtn: {
+      type: cc.Button,
+      default: null
+    },
+    isStart: false,
+    isShowRewardResult:false,
   },
 
   // use this for initialization
   onLoad: function() {},
 
   spin: function() {
+    if(this.isShowRewardResult){
+      return;
+    }
+    this.startBtn.interactable = false;
+    this.isStart = !this.isStart;
     var rollers = this.node.getComponentsInChildren(Roller);
 
     rollers.forEach(function(roller, index, array) {
       roller.toggleSpin();
     });
-    this.audioManager.playSpinning();
+    cc.log("this.isStart"+this.isStart);
+    if(this.isStart){
+      
+      this.audioManager.playSpinning();
+    }else{
+      this.audioManager.pauseSpinning();
+    }
+    this.w_spin();
   },
 
   w_spin: function() {
+    if(!this.isStart){
+      cc.log("Roulette has not yet rolled! this.isStart = "+this.isStart);
+      return;
+    }
+    if(this.isShowRewardResult){
+      return;
+    }
+    this.isShowRewardResult = true;
     var rollers = this.node.getComponentsInChildren(Roller);
     var delay = 1000;
     var num_string = this.rewardNum.string;
@@ -68,7 +94,7 @@ cc.Class({
         rollers[3].toggleSpin(parseInt(res[1]));
         this.audioManager.playMetal();
       }.bind(this),
-      delay + 4500
+      delay + 5000
     );
 
     setTimeout(
@@ -77,6 +103,9 @@ cc.Class({
         this.audioManager.playMetal();
         this.audioManager.playWinSound();
         this.audioManager.pauseSpinning();
+        this.isShowRewardResult = false;
+        this.isStart = !this.isStart;
+        this.startBtn.interactable = true;
       }.bind(this),
       delay + 6500
     );

@@ -15,9 +15,7 @@
     "subContext": ""
   },
   "encryptJs": true,
-  "excludeScenes": [
-    "ce2c8dea-c908-49c8-84b2-95ba2487e67e"
-  ],
+  "excludeScenes": [],
   "fb-instant-games": {},
   "includeSDKBox": false,
   "inlineSpriteFrames": true,
@@ -37,7 +35,7 @@
     "orientation": "portrait",
     "zip": false
   },
-  "startScene": "d1084ecb-171f-4129-b942-b265f76b9ba5",
+  "startScene": "ce2c8dea-c908-49c8-84b2-95ba2487e67e",
   "title": "cocos-slot-test",
   "webOrientation": "auto",
   "wechatgame": {

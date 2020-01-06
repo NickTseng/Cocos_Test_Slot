@@ -126,7 +126,7 @@ var Roller = cc.Class({
     this._updateScroller();
     this._updateSymbolSize();
     this._updateSymbolSpriteFrame();
-    this.rollerSymbolResult = [];
+    // this.rollerSymbolResult = [];
 
     this._customRollerResult = [];
   },
