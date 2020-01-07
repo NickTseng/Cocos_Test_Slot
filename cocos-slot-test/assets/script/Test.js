@@ -16,14 +16,14 @@ cc.Class({
       default: null
     },
     isStart: false,
-    isShowRewardResult:false,
+    isShowRewardResult: false
   },
 
   // use this for initialization
   onLoad: function() {},
 
   spin: function() {
-    if(this.isShowRewardResult){
+    if (this.isShowRewardResult) {
       return;
     }
     this.startBtn.interactable = false;
@@ -33,29 +33,28 @@ cc.Class({
     rollers.forEach(function(roller, index, array) {
       roller.toggleSpin();
     });
-    cc.log("this.isStart"+this.isStart);
-    if(this.isStart){
-      
+    cc.log("this.isStart" + this.isStart);
+    if (this.isStart) {
       this.audioManager.playSpinning();
-    }else{
+    } else {
       this.audioManager.pauseSpinning();
     }
     this.w_spin();
   },
 
   w_spin: function() {
-    if(!this.isStart){
-      cc.log("Roulette has not yet rolled! this.isStart = "+this.isStart);
+    if (!this.isStart) {
+      cc.log("Roulette has not yet rolled! this.isStart = " + this.isStart);
       return;
     }
-    if(this.isShowRewardResult){
+    if (this.isShowRewardResult) {
       return;
     }
     this.isShowRewardResult = true;
     var rollers = this.node.getComponentsInChildren(Roller);
     var delay = 1000;
     var num_string = this.rewardNum.string;
-    var res = num_string.split("");
+    var res = num_string.split("").reverse();
     console.log("res = " + res.length);
     console.log("res 0  = " + res[0]);
     console.log("res 0  = " + res[1]);
@@ -67,7 +66,7 @@ cc.Class({
 
     setTimeout(
       function() {
-        rollers[0].toggleSpin(parseInt(res[4]));
+        rollers[0].toggleSpin(parseInt(res[0]));
         this.audioManager.playMetal();
       }.bind(this),
       delay + 2000
@@ -75,7 +74,7 @@ cc.Class({
 
     setTimeout(
       function() {
-        rollers[1].toggleSpin(parseInt(res[3]));
+        rollers[1].toggleSpin(parseInt(res[1]));
         this.audioManager.playMetal();
       }.bind(this),
       delay + 3000
@@ -91,7 +90,7 @@ cc.Class({
 
     setTimeout(
       function() {
-        rollers[3].toggleSpin(parseInt(res[1]));
+        rollers[3].toggleSpin(parseInt(res[3]));
         this.audioManager.playMetal();
       }.bind(this),
       delay + 5000
@@ -99,7 +98,7 @@ cc.Class({
 
     setTimeout(
       function() {
-        rollers[4].toggleSpin(parseInt(res[0]));
+        rollers[4].toggleSpin(parseInt(res[4]));
         this.audioManager.playMetal();
         this.audioManager.playWinSound();
         this.audioManager.pauseSpinning();
